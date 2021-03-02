@@ -27,6 +27,7 @@ namespace Session12Battleship
             // Play a sound when we hit a ship?
             // Deal with user numbers that are out of range, or not numbers?
             // Refactor into functions?
+            // Display my playfield at the end
 
 
             // define playfield
@@ -51,34 +52,7 @@ namespace Session12Battleship
             while (keepLooping == true)
             {
                 // show the playfield
-                // If I see a 0, put a ?
-                // If I see a 1, put a W
-                // If I see a 2, put a *
-                // If I see a 3, put a ?
-                for (int row = 0; row < 8; row++)
-                {
-                    for (int col = 0; col < 8; col++)
-                    {
-                        // show the user-y version of the current cell
-                        string currentCell = playfield[row, col];
-                        if (currentCell == water || currentCell == hiddenShip)
-                        {
-                            Console.Write("?");
-                        }
-
-                        if (currentCell == miss)
-                        {
-                            Console.Write(".");
-                        }
-
-                        if (currentCell == hitShip)
-                        {
-                            Console.Write("*");
-                        }
-                        Console.Write(" ");
-                    }
-                    Console.WriteLine();
-                }
+                DisplayPlayfield(playfield);
 
                 // ask for a userRow
                 Console.WriteLine("Please give me a number from 0-7 for a row");
@@ -127,7 +101,47 @@ namespace Session12Battleship
                 }
 
             }
+            
+            DisplayPlayfield(playfield); // this line bakes the cake
+            string[,] newPlayfield = new string[8, 8];
+            newPlayfield[0, 0] = "blazzle";
+            DisplayPlayfield(newPlayfield);
+        }
 
+        // this is where functions live!
+        // static returntype name (arguments/parameters)
+        // this is a recipe - a set of instructions.
+        static void DisplayPlayfield(string[,] thingToDisplay)
+        {
+            string water = null;
+            string miss = "Q";
+            string hitShip = "blazzle";
+            string hiddenShip = "shhh, don't look here";
+
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    // show the user-y version of the current cell
+                    string currentCell = thingToDisplay[row, col];
+                    if (currentCell == water || currentCell == hiddenShip)
+                    {
+                        Console.Write("?");
+                    }
+
+                    if (currentCell == miss)
+                    {
+                        Console.Write(".");
+                    }
+
+                    if (currentCell == hitShip)
+                    {
+                        Console.Write("*");
+                    }
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
