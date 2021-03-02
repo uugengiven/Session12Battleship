@@ -18,6 +18,14 @@ namespace Session12Battleship
             // If not, it says "miss!"
             // [Do it all again] from `show the playfield`
 
+            // things still to do
+            // Make it so it ends?
+            // Make it so the user can't see where all the ships are?
+            // Show near misses?
+            // Play a sound when we hit a ship?
+            // Deal with user numbers that are out of range, or not numbers?
+            // Refactor into functions?
+
 
             // define playfield
             // int[,] playfield = new int[8, 8];
