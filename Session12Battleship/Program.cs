@@ -35,8 +35,8 @@ namespace Session12Battleship
             // playfield defaults to all 0s
             // 0 will be my open water
             // 1 will be my miss
-            // 2 will be my hit
-            // 3 will be my ship
+            // 2 will be my hit ship
+            // 3 will be my hidden ship
 
             // add ships
             playfield[2, 3] = 3;
@@ -44,12 +44,30 @@ namespace Session12Battleship
             while (true)
             {
                 // show the playfield
+                // If I see a 0, put a ?
+                // If I see a 1, put a W
+                // If I see a 2, put a *
+                // If I see a 3, put a ?
                 for (int row = 0; row < 8; row++)
                 {
                     for (int col = 0; col < 8; col++)
                     {
-                        // show the current cell
-                        Console.Write(playfield[row, col]);
+                        // show the user-y version of the current cell
+                        if (playfield[row, col] == 0 || playfield[row, col] == 3)
+                        {
+                            Console.Write("?");
+                        }
+
+                        if (playfield[row, col] == 1)
+                        {
+                            Console.Write(".");
+                        }
+
+                        if (playfield[row, col] == 2)
+                        {
+                            Console.Write("*");
+                        }
+                        Console.Write(" ");
                     }
                     Console.WriteLine();
                 }
